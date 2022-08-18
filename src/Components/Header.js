@@ -5,6 +5,7 @@ import { FaShoppingCart } from "react-icons/fa";
 
 const HeaderWrapper = styled.div`
   background-color: black;
+  max-width: 100vw;
 `;
 
 const Container = styled.div`
@@ -12,7 +13,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 2.5rem 2rem;
-  margin: 0 auto;
+
   a {
     text-decoration: none;
   }
@@ -35,7 +36,6 @@ const Navbar = styled.div`
   gap:5rem;
   font-size: 2.4rem;
   padding: 0 2rem;
-  
   
 
   @media (max-width: 480px) {
@@ -69,7 +69,7 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const Header = () => {
+const Header = ({ setIsOpen }) => {
   return (
     <>
       <HeaderWrapper>
@@ -81,7 +81,7 @@ const Header = () => {
             <StyledLink to="/"> Home</StyledLink>
             <StyledLink to="/">Products</StyledLink>
             <StyledLink to="contact">Contanct</StyledLink>
-            <ButtonContainer>
+            <ButtonContainer onClick={() => setIsOpen(true)}>
               <FaShoppingCart shappe="round" />
             </ButtonContainer>
           </Navbar>

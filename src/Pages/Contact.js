@@ -74,6 +74,7 @@ const SocialMedia = styled.div`
   display: flex;
   gap: 10rem;
   font-size: 10rem;
+  min-width: 0;
   @media (max-width: 768px) {
     gap: 5rem;
     font-size: 8rem;
@@ -96,6 +97,7 @@ const SocialLink = styled.a`
   cursor: pointer;
   transition: transform 0.15s ease-in-out;
   color: yellow;
+  flex: 1;
   &:hover {
     transform: scale(1.1);
   }
