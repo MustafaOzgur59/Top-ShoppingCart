@@ -5,24 +5,17 @@ import styled from "styled-components";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadProducts();
-    console.log("Products loaded inside useEffect");
+    setLoading(true);
+    loadProducts().then(() => {
+      setLoading(false);
+      console.log("Products loaded inside useEffect");
+    });
   }, []);
 
-  const fetchProducts = async () => {
-    const products = await fetch("https://fakestoreapi.com/products");
-    const data = await products.json();
-    console.log(data);
-    return data;
-  };
-
-  const loadProducts = async () => {
-    const products = await fetchProducts();
-    setProducts(products);
-  };
-  return (
+  const wrappedProducts = (
     <ProductsWrapper>
       {products.map((product) => {
         return (
@@ -36,6 +29,39 @@ const Products = () => {
       })}
     </ProductsWrapper>
   );
+
+  const fetchProducts = async () => {
+    const products = await fetch("https://fakestoreapi.com/products");
+    const data = await products.json();
+    console.log(data);
+    return data;
+  };
+
+  const loadProducts = async () => {
+    const products = await fetchProducts();
+    setProducts(products);
+  };
+
+  return (
+    <>
+      {loading ? (
+        "Loading products ..."
+      ) : (
+        <ProductsWrapper>
+          {products.map((product) => {
+            return (
+              <ProductCard
+                desc={product.description}
+                image={product.image}
+                price={product.price}
+                title={product.title}
+              />
+            );
+          })}
+        </ProductsWrapper>
+      )}
+    </>
+  );
 };
 
 const ProductsWrapper = styled.div`
@@ -44,7 +70,7 @@ const ProductsWrapper = styled.div`
   gap: 3rem;
   margin-top: 4rem;
   padding: 5rem;
-  overflow-x: hidden;
+
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, minmax(28rem, 36rem));
     justify-content: center;

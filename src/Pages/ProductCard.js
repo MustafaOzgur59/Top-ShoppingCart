@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const ProductCard = ({ desc, image, price, title }) => {
+  const [amount, setAmount] = useState(0);
+  const onClickPlus = () => {
+    setAmount(amount + 1);
+  };
+
+  useEffect(() => {
+    console.log("You have triggered meeeeEEEE!!!");
+  }, [amount]);
+
   return (
     <ProductCardWrapper>
       <Info>{title}</Info>
       <ImageContainer>
         <Image src={image} alt={title} />
       </ImageContainer>
-      <p>{price} $</p>
+      <PriceContainer>
+        {price} $
+        <InputCont>
+          <PlusMinusBtn onClick={() => onClickPlus()}>+</PlusMinusBtn>
+          <StyledInput
+            type="number"
+            name=""
+            id="product-amount"
+            value={amount ? amount : ""}
+          />
+          <PlusMinusBtn>-</PlusMinusBtn>
+        </InputCont>
+      </PriceContainer>
       <Button>Add To Cart</Button>
     </ProductCardWrapper>
   );
@@ -41,6 +62,39 @@ const Info = styled.div`
   gap: 1rem;
   height: 100%;
   font-weight: bold;
+`;
+
+const PriceContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+`;
+
+const InputCont = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const PlusMinusBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+`;
+
+const StyledInput = styled.input`
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 10rem;
+  &:focus {
+    border: 1px solid black;
+  }
 `;
 
 const Button = styled.button`
