@@ -52,10 +52,10 @@ const ContactWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10rem;
-  margin-top: 14rem;
+  gap: 6rem;
+  margin-top: 7rem;
   margin-bottom: 26.5rem;
-  animation: fadeIn ease 2s;
+  animation: fadeIn ease 3s;
   background-color: green;
   @keyframes fadeIn {
     0% {

@@ -3,14 +3,16 @@ import { FaGithub } from "react-icons/fa";
 import styled from "styled-components";
 
 const FooterWrapper = styled.div`
+  width: 100vw;
+  z-index: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 2rem;
   background-color: black;
   max-height: 100px;
   height: 50px;
-
+  font-size: 2.3rem;
   a,
   a:hover,
   a:visited,
