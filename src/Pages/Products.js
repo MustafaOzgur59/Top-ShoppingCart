@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import ProductCard from "./ProductCard";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 const Products = ({ cartItems, setCartItems }) => {
   const [products, setProducts] = useState([]);
@@ -34,8 +35,11 @@ const Products = ({ cartItems, setCartItems }) => {
       ) : (
         <ProductsWrapper>
           {products.map((product) => {
+            const uniqKey = uuidv4();
             return (
               <ProductCard
+                key={uniqKey}
+                id={uniqKey}
                 desc={product.description}
                 image={product.image}
                 price={product.price}

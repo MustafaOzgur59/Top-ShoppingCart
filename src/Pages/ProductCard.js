@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const ProductCard = ({
+  id,
   desc,
   image,
   price,
@@ -27,7 +28,7 @@ const ProductCard = ({
     if (amount !== 0) {
       setCartItems([
         ...cartItems,
-        { amount: amount, price: price, title: title, image: image },
+        { amount: amount, price: price, title: title, image: image, id: id },
       ]);
       setAmount(0);
     } else {
