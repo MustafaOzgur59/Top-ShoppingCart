@@ -1,10 +1,27 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
-const CheckOutCart = ({ isOpen, setIsOpen }) => {
+const CheckOutCart = ({ isOpen, setIsOpen, cartItems, setCartItems }) => {
   return (
     <>
-      <CartWrapper isOpen={isOpen}>asdasfas</CartWrapper>
+      <CartWrapper isOpen={isOpen}>
+        {cartItems.map((cartItem) => {
+          return (
+            <div>
+              <ImageContainer>
+                <Image src={cartItem.image} alt="itemImage" />
+              </ImageContainer>
+
+              <p>{cartItem.title}</p>
+              <p>
+                {cartItem.price} $ × {cartItem.amount} ={" "}
+                {cartItem.price * cartItem.amount} $
+              </p>
+              <p></p>
+            </div>
+          );
+        })}
+      </CartWrapper>
       <Overlay isOpen={isOpen} onClick={() => setIsOpen(false)} />
     </>
   );
@@ -24,6 +41,7 @@ const CartWrapper = styled.div`
   padding: 6rem;
   background-color: #fff;
   font-size: 3rem;
+  overflow-y: auto;
   transition: right 0.85s ease-in-out;
   ${({ isOpen }) =>
     isOpen &&
@@ -35,9 +53,20 @@ const CartWrapper = styled.div`
   }
 `;
 
+const Image = styled.img`
+  height: 100%;
+`;
+
+const ImageContainer = styled.div`
+  height: 15rem;
+  width: 15rem;
+  padding: 3rem;
+  margin: 0 auto;
+`;
+
 const Overlay = styled.div`
   position: fixed;
-
+  z-index: 0;
   top: 0;
   left: -100%;
   width: 100%;

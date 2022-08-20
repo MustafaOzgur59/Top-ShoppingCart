@@ -8,7 +8,7 @@ import { useState } from "react";
 import CheckOutCart from "./Components/CheckOutCart";
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState({});
+  const [cartItems, setCartItems] = useState([]);
   return (
     <>
       <BrowserRouter className="App">
@@ -26,7 +26,12 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Footer />
-      <CheckOutCart isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
+      <CheckOutCart
+        isOpen={isCartOpen}
+        setIsOpen={setIsCartOpen}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+      />
     </>
   );
 }

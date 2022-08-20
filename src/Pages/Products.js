@@ -15,23 +15,6 @@ const Products = ({ cartItems, setCartItems }) => {
     });
   }, []);
 
-  const wrappedProducts = (
-    <ProductsWrapper>
-      {products.map((product) => {
-        return (
-          <ProductCard
-            desc={product.description}
-            image={product.image}
-            price={product.price}
-            title={product.title}
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-          />
-        );
-      })}
-    </ProductsWrapper>
-  );
-
   const fetchProducts = async () => {
     const products = await fetch("https://fakestoreapi.com/products");
     const data = await products.json();
@@ -57,6 +40,8 @@ const Products = ({ cartItems, setCartItems }) => {
                 image={product.image}
                 price={product.price}
                 title={product.title}
+                cartItems={cartItems}
+                setCartItems={setCartItems}
               />
             );
           })}

@@ -1,8 +1,20 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const ProductCard = ({ desc, image, price, title }) => {
+const ProductCard = ({
+  desc,
+  image,
+  price,
+  title,
+  cartItems,
+  setCartItems,
+}) => {
   const [amount, setAmount] = useState(0);
+
+  useEffect(() => {
+    console.log("You have triggered meeeeEEEE!!!");
+  }, [amount]);
+
   const onClickPlus = () => {
     setAmount(parseInt(amount, 10) >= 0 ? amount + 1 : 0);
   };
@@ -11,9 +23,17 @@ const ProductCard = ({ desc, image, price, title }) => {
     setAmount(parseInt(amount, 10) > 0 ? amount - 1 : 0);
   };
 
-  useEffect(() => {
-    console.log("You have triggered meeeeEEEE!!!");
-  }, [amount]);
+  const onAddClick = () => {
+    if (amount !== 0) {
+      setCartItems([
+        ...cartItems,
+        { amount: amount, price: price, title: title, image: image },
+      ]);
+      setAmount(0);
+    } else {
+      alert("At least one has to be added!!");
+    }
+  };
 
   return (
     <ProductCardWrapper>
@@ -41,7 +61,7 @@ const ProductCard = ({ desc, image, price, title }) => {
           <PlusMinusBtn onClick={() => onClickMinus()}>-</PlusMinusBtn>
         </InputCont>
       </PriceContainer>
-      <Button>Add To Cart</Button>
+      <Button onClick={onAddClick}>Add To Cart</Button>
     </ProductCardWrapper>
   );
 };
