@@ -8,13 +8,19 @@ import { useState } from "react";
 import CheckOutCart from "./Components/CheckOutCart";
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState({});
   return (
     <>
       <BrowserRouter className="App">
         <Routes>
           <Route path="/" element={<Header setIsOpen={setIsCartOpen} />}>
             <Route path="home" element={<Home />} />
-            <Route path="products" element={<Products />} />
+            <Route
+              path="products"
+              element={
+                <Products cartItems={cartItems} setCartItems={setCartItems} />
+              }
+            />
             <Route path="contact" element={<Contact />}></Route>
           </Route>
         </Routes>

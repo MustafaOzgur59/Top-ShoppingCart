@@ -4,7 +4,11 @@ import styled from "styled-components";
 const ProductCard = ({ desc, image, price, title }) => {
   const [amount, setAmount] = useState(0);
   const onClickPlus = () => {
-    setAmount(amount + 1);
+    setAmount(parseInt(amount, 10) >= 0 ? amount + 1 : 0);
+  };
+
+  const onClickMinus = () => {
+    setAmount(parseInt(amount, 10) > 0 ? amount - 1 : 0);
   };
 
   useEffect(() => {
@@ -26,8 +30,15 @@ const ProductCard = ({ desc, image, price, title }) => {
             name=""
             id="product-amount"
             value={amount ? amount : ""}
+            onChange={(e) => {
+              setAmount(
+                parseInt(e.target.value, 10) >= 0
+                  ? parseInt(e.target.value, 10)
+                  : 0
+              );
+            }}
           />
-          <PlusMinusBtn>-</PlusMinusBtn>
+          <PlusMinusBtn onClick={() => onClickMinus()}>-</PlusMinusBtn>
         </InputCont>
       </PriceContainer>
       <Button>Add To Cart</Button>

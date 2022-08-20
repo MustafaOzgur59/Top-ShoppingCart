@@ -3,7 +3,7 @@ import { useState } from "react";
 import ProductCard from "./ProductCard";
 import styled from "styled-components";
 
-const Products = () => {
+const Products = ({ cartItems, setCartItems }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -24,6 +24,8 @@ const Products = () => {
             image={product.image}
             price={product.price}
             title={product.title}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
           />
         );
       })}
