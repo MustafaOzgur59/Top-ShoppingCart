@@ -59,8 +59,8 @@ const ProductsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
-  margin-top: 4rem;
-  padding: 5rem;
+  margin: 4rem 0rem 10rem 0rem;
+  padding: 0rem 4rem;
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, minmax(28rem, 36rem));

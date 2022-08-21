@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 const CheckOutCart = ({ isOpen, setIsOpen, cartItems, setCartItems }) => {
@@ -6,31 +7,69 @@ const CheckOutCart = ({ isOpen, setIsOpen, cartItems, setCartItems }) => {
     const remainingItems = cartItems.filter((item) => item.id !== id);
     setCartItems(remainingItems);
   };
+
+  const handlePlus = (id) => {
+    setCartItems(
+      cartItems.map((item) => {
+        if (item.id === id) return { ...item, amount: item.amount + 1 };
+        else return item;
+      })
+    );
+  };
+
+  const handleMinus = (id) => {
+    setCartItems(
+      cartItems.map((item) => {
+        if (item.id === id) return { ...item, amount: item.amount - 1 };
+        else return item;
+      })
+    );
+  };
+
+  const cartItemCards = cartItems.map((cartItem) => {
+    return (
+      <ProductCard>
+        <ImageContainer>
+          <Image src={cartItem.image} alt="itemImage" />
+        </ImageContainer>
+        <h5>{cartItem.title}</h5>
+        <p>
+          {cartItem.price} $ × {cartItem.amount} ={" "}
+          {cartItem.price * cartItem.amount} $
+          <AmountChanger>
+            <button onClick={() => handlePlus(cartItem.id)}>+</button>
+            <p>{cartItem.amount}</p>
+            <button onClick={() => handleMinus(cartItem.id)}>-</button>
+          </AmountChanger>
+        </p>
+        <DiscardButton
+          onClick={() => {
+            handleDiscard(cartItem.id);
+          }}
+        >
+          Discard
+        </DiscardButton>
+      </ProductCard>
+    );
+  });
+
+  const emptyCart = (
+    <EmptyCart>
+      <h1>The cart is empty</h1>
+      <StyledLink to="products" onClick={() => setIsOpen(false)}>
+        Shop Now!
+      </StyledLink>
+    </EmptyCart>
+  );
   return (
     <>
       <CartWrapper isOpen={isOpen}>
-        {cartItems.map((cartItem) => {
-          return (
-            <ProductCard>
-              <ImageContainer>
-                <Image src={cartItem.image} alt="itemImage" />
-              </ImageContainer>
-              <h5>{cartItem.title}</h5>
-              <p>
-                {cartItem.price} $ × {cartItem.amount} ={" "}
-                {cartItem.price * cartItem.amount} $
-              </p>
-              <DiscardButton
-                onClick={() => {
-                  handleDiscard(cartItem.id);
-                }}
-              >
-                Discard
-              </DiscardButton>
-            </ProductCard>
-          );
-        })}
-        <Button style={{ backgroundColor: "green" }}>CheckOut</Button>
+        {cartItems.length === 0 ? emptyCart : cartItemCards}
+        {cartItems.length ? (
+          <Button style={{ backgroundColor: "green" }}>CheckOut</Button>
+        ) : (
+          ""
+        )}
         <Button
           style={{ backgroundColor: "red" }}
           onClick={() => setIsOpen(false)}
@@ -69,6 +108,27 @@ const CartWrapper = styled.div`
   }
 `;
 
+const EmptyCart = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-self: center;
+`;
+
+const StyledLink = styled(Link)`
+  padding: 1rem;
+  color: black;
+  transition: transform 0.2s ease-in-out;
+  color: white;
+  background-color: black;
+  margin-top: 2rem;
+  border-radius: 8px;
+  padding: 1rem 6rem;
+  :hover {
+    transform: scale(1.3);
+  }
+`;
+
 const ProductCard = styled.div`
   width: 100%;
   display: flex;
@@ -76,6 +136,31 @@ const ProductCard = styled.div`
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.9);
+`;
+
+const AmountChanger = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+
+  p {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 7%;
+    max-width: 12%;
+    border-radius: 4px;
+    margin: 0.5rem;
+    color: black;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 `;
 
 const Image = styled.img`
@@ -120,6 +205,9 @@ const Overlay = styled.div`
     isOpen &&
     css`
       left: 0;
+      body {
+        overflow-y: hidden;
+      }
     `}
 `;
 export default CheckOutCart;

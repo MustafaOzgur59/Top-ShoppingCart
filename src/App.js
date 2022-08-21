@@ -24,14 +24,14 @@ function App() {
             <Route path="contact" element={<Contact />}></Route>
           </Route>
         </Routes>
+        <Footer />
+        <CheckOutCart
+          isOpen={isCartOpen}
+          setIsOpen={setIsCartOpen}
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+        />
       </BrowserRouter>
-      <Footer />
-      <CheckOutCart
-        isOpen={isCartOpen}
-        setIsOpen={setIsCartOpen}
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-      />
     </>
   );
 }

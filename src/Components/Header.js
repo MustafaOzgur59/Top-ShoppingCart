@@ -6,7 +6,6 @@ import { FaShoppingCart } from "react-icons/fa";
 const HeaderWrapper = styled.div`
   background-color: black;
   max-width: 100vw;
-  width: 100vw;
   position: sticky;
   top: 0;
 `;
