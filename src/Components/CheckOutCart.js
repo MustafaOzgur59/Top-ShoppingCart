@@ -20,7 +20,8 @@ const CheckOutCart = ({ isOpen, setIsOpen, cartItems, setCartItems }) => {
   const handleMinus = (id) => {
     setCartItems(
       cartItems.map((item) => {
-        if (item.id === id) return { ...item, amount: item.amount - 1 };
+        if (item.id === id)
+          return { ...item, amount: item.amount === 0 ? 0 : item.amount - 1 };
         else return item;
       })
     );
