@@ -42,13 +42,15 @@ const Contact = () => {
       </SocialMedia>
       <ContactInfo>
         <p>FakeStore</p>
-        <p>Rodeo Drive 42, Los Angeles USA</p>
+        <p>1523 Tavern Place,Lakewood Colorado USA</p>
+        <p>303-988-8434</p>
       </ContactInfo>
     </ContactWrapper>
   );
 };
 
 const ContactWrapper = styled.div`
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import ProductCard from "./ProductCard";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 
 const Products = ({ cartItems, setCartItems }) => {
@@ -29,9 +29,12 @@ const Products = ({ cartItems, setCartItems }) => {
   };
 
   return (
-    <>
+    <Wrapper>
       {loading ? (
-        "Loading products ..."
+        <ModalWrapper>
+          <LoadingModal></LoadingModal>
+          <h1>Loading Products</h1>
+        </ModalWrapper>
       ) : (
         <ProductsWrapper>
           {products.map((product) => {
@@ -51,9 +54,17 @@ const Products = ({ cartItems, setCartItems }) => {
           })}
         </ProductsWrapper>
       )}
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+`;
 
 const ProductsWrapper = styled.div`
   display: grid;
@@ -78,6 +89,38 @@ const ProductsWrapper = styled.div`
       opacity: 1;
     }
   }
+`;
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const ModalWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  h1 {
+    color: white;
+  }
+  align-items: center;
+  justify-content: center;
+  background-color: #dcd8d0;
+`;
+
+const LoadingModal = styled.div`
+  width: 300px;
+  height: 300px;
+  border: 7px solid #d86881;
+  border-left: 7px solid white;
+  border-radius: 50%;
+  animation: ${spin} 1000ms infinite ease-in-out;
 `;
 
 export default Products;

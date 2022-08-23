@@ -18,6 +18,7 @@ const GlobalStyle = styled.createGlobalStyle`
   body {
     font-family: "Poppins", sans-serif;
     font-size: 1.6rem;
+    min-height: 100%;
   }
 
   h1,

@@ -4,9 +4,7 @@ import styled from "styled-components";
 
 const FooterWrapper = styled.div`
   width: 100%;
-  z-index: 0;
-  position: absolute;
-  bottom: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;

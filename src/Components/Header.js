@@ -81,7 +81,7 @@ const Header = ({ setIsOpen }) => {
             <Logo>WAssappp</Logo>
           </Link>
           <Navbar>
-            <StyledLink to="home"> Home</StyledLink>
+            <StyledLink to="/"> Home</StyledLink>
             <StyledLink to="products">Products</StyledLink>
             <StyledLink to="contact">Contanct</StyledLink>
             <ButtonContainer onClick={() => setIsOpen(true)}>

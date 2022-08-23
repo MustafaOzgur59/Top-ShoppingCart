@@ -6,15 +6,16 @@ import Contact from "./Pages/Contact";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import CheckOutCart from "./Components/CheckOutCart";
+import styled from "styled-components";
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   return (
-    <>
+    <AppWrapper>
       <BrowserRouter className="App">
         <Routes>
           <Route path="/" element={<Header setIsOpen={setIsCartOpen} />}>
-            <Route path="home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route
               path="products"
               element={
@@ -32,8 +33,14 @@ function App() {
           setCartItems={setCartItems}
         />
       </BrowserRouter>
-    </>
+    </AppWrapper>
   );
 }
+
+const AppWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
 export default App;
