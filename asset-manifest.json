@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/Top-ShoppingCart/static/js/main.9b67b479.js",
+    "main.js": "/Top-ShoppingCart/static/js/main.60b6247c.js",
     "static/media/home.jpeg": "/Top-ShoppingCart/static/media/home.8e6067a4b4a9194a386d.jpeg",
     "index.html": "/Top-ShoppingCart/index.html",
-    "main.9b67b479.js.map": "/Top-ShoppingCart/static/js/main.9b67b479.js.map"
+    "main.60b6247c.js.map": "/Top-ShoppingCart/static/js/main.60b6247c.js.map"
   },
   "entrypoints": [
-    "static/js/main.9b67b479.js"
+    "static/js/main.60b6247c.js"
   ]
 }
