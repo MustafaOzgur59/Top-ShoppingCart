@@ -2,13 +2,13 @@
 
 A simple shopping cart React app.Done according to The Origin Project's curriculum.
 
-[Live Demo] insert here rhe link :point_left:
+[Live Demo] insert here the link :point_left:
 
 ## Getting started
 
 ```
 git clone https://github.com/MustafaOzgur59/Top-ShoppingCart.git
-cd shopping-cart
+cd react-shopping-cart
 npm install
 npm start
 ```
