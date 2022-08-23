@@ -14,7 +14,10 @@ function App() {
     <AppWrapper>
       <BrowserRouter className="App">
         <Routes>
-          <Route path="/" element={<Header setIsOpen={setIsCartOpen} />}>
+          <Route
+            path="/"
+            element={<Header setIsOpen={setIsCartOpen} cartItems={cartItems} />}
+          >
             <Route path="/" element={<Home />} />
             <Route
               path="products"

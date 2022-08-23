@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <HomeWrapper>
-      <StyledContainer class="cta">
-        <h1>Fashion straight to your doorstep</h1>
-        <h3>Get yourself fashionified without leaving your home</h3>
+      <StyledContainer>
+        <h1>The e-commerce platform that cares</h1>
+        <h3>Get yourself everything without leaving your home</h3>
         <StyledLink to="products">
           <StyledButton> Shop Now </StyledButton>
         </StyledLink>

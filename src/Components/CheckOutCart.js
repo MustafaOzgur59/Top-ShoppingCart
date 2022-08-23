@@ -85,7 +85,7 @@ const CheckOutCart = ({ isOpen, setIsOpen, cartItems, setCartItems }) => {
 
 const CartWrapper = styled.div`
   position: fixed;
-  z-index: 1;
+  z-index: 50;
   top: 0;
   right: -110%;
   display: flex;
@@ -194,7 +194,7 @@ const DiscardButton = styled(Button)`
 
 const Overlay = styled.div`
   position: fixed;
-  z-index: 0;
+  z-index: 49;
   top: 0;
   left: -100%;
   width: 100%;

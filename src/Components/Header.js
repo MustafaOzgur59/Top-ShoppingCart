@@ -27,7 +27,7 @@ const Container = styled.div`
 `;
 
 const Logo = styled.div`
-  color: blue;
+  color: #fe6100;
   font-size: 5rem;
 `;
 
@@ -59,9 +59,10 @@ const StyledLink = styled(Link)`
 const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
   cursor: pointer;
   transition: transform 0.15s ease-in-out;
-  color: blue;
+  color: #fe6100;
   background-color: inherit;
   padding: 1rem;
   &:hover {
@@ -72,7 +73,22 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const Header = ({ setIsOpen }) => {
+const ProductCount = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+  position: absolute;
+  bottom: 0;
+  left: 60%;
+  color: white;
+  background-color: #fe6100;
+  border-radius: 50%;
+`;
+
+const Header = ({ setIsOpen, cartItems }) => {
   return (
     <>
       <HeaderWrapper>
@@ -86,6 +102,11 @@ const Header = ({ setIsOpen }) => {
             <StyledLink to="contact">Contanct</StyledLink>
             <ButtonContainer onClick={() => setIsOpen(true)}>
               <FaShoppingCart />
+              <ProductCount>
+                {cartItems.reduce((acc, item) => {
+                  return acc + item.amount;
+                }, 0)}
+              </ProductCount>
             </ButtonContainer>
           </Navbar>
         </Container>
