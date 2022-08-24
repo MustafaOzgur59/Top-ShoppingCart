@@ -2,7 +2,7 @@
 
 A simple shopping cart React app.Done according to The Origin Project's curriculum.
 
-[Live Demo] insert here the link :point_left:
+[Live Demo](https://mustafaozgur59.github.io/Top-ShoppingCart/) :point_left:
 
 ## Getting started
 

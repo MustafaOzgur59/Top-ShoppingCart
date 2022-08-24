@@ -94,7 +94,7 @@ const Header = ({ setIsOpen, cartItems }) => {
       <HeaderWrapper>
         <Container>
           <Link to="/">
-            <Logo>WAssappp</Logo>
+            <Logo>E-Commerce</Logo>
           </Link>
           <Navbar>
             <StyledLink to="/"> Home</StyledLink>

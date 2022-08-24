@@ -3,7 +3,7 @@ import Header from "./Components/Header";
 import Home from "./Pages/Home";
 import Products from "./Pages/Products";
 import Contact from "./Pages/Contact";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import CheckOutCart from "./Components/CheckOutCart";
 import styled from "styled-components";
@@ -12,7 +12,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   return (
     <AppWrapper>
-      <BrowserRouter className="App">
+      <HashRouter className="App">
         <Routes>
           <Route
             path="/"
@@ -35,7 +35,7 @@ function App() {
           cartItems={cartItems}
           setCartItems={setCartItems}
         />
-      </BrowserRouter>
+      </HashRouter>
     </AppWrapper>
   );
 }
